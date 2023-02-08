@@ -3,7 +3,6 @@ import { VscSearch } from "react-icons/vsc";
 import { AiOutlineSync } from "react-icons/ai";
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import Movie from "./MoviesText";
 import { Link } from "react-router-dom";
 
 const Search = () => {
@@ -13,28 +12,22 @@ const Search = () => {
 
   async function fetchData() {
     const response = await axios.get(
-      `https://www.omdbapi.com/?i=tt3896198&apikey=8d3516ff&s=spiderman`
+      `https://www.omdbapi.com/?i=tt3896198&apikey=8d3516ff&s=Fast`
     );
-    setMovie(response.data.Search);
+    console.log(response.data.Search)
+    let arr = [];
+    for (let i = 0; i < response.data.Search.length; ++i) {
+      if (response.data.Search[i].Poster !== "N/A") {
+        arr.push(response.data.Search[i]);
+      }
+    }
+    // console.log(arr)
+    setMovie(arr);
   }
-  console.log(movie);
 
   useEffect(() => {
     fetchData();
   }, []);
-
-  function moviesHtml() {
-    movie?.map((movie) => [
-      <div className="movie">
-        <figure>
-          <Link className="links" to="/movie">
-            <img src={movie.Poster} alt="" />
-          </Link>
-        </figure>
-        <Link className="links" to="/movie">{movie.Title}</Link>
-      </div>
-    ])
-  }
 
   async function getMovie(e) {
     const inputValue = searchRef.current.value;
@@ -42,11 +35,17 @@ const Search = () => {
     const moviesWrapper = await fetch(
       `https://www.omdbapi.com/?i=tt3896198&apikey=8d3516ff&s=${inputValue}`
     );
-    console.log(moviesWrapper);
     const movie = await moviesWrapper.json();
-    console.log(movie.Search);
-    let arr = []
-    arr.push(movie.Search)
+
+    let arr = [];
+    for (let i = 0; i < movie.Search.length; ++i) {
+      if (movie.Search[i].Poster !== "N/A") {
+        arr.push(movie.Search[i]);
+      }
+    }
+
+    console.log(arr);
+    setMovie(arr);
   }
 
   function refreshPage() {
@@ -77,17 +76,18 @@ const Search = () => {
               <h1 className="aqua--text search">Search Results:</h1>
             </div>
             <div className="movies">
-              {/* {movie?.map((movie) => [
+              {movie.map((movie) => (
                 <div className="movie">
                   <figure>
                     <Link className="links" to="/movie">
                       <img src={movie.Poster} alt="" />
                     </Link>
                   </figure>
-                  <Link className="links" to="/movie">{movie.Title}</Link>
+                  <Link className="links" to="/movie">
+                    {movie.Title}
+                  </Link>
                 </div>
-              ])} */}
-              <Movie />
+              ))}
             </div>
           </div>
         </div>
@@ -97,3 +97,16 @@ const Search = () => {
 };
 
 export default Search;
+
+// {movie.map((movie) => (
+//   <div className="movie">
+//     <figure>
+//       <Link className="links" to="/movie">
+//         <img src={movie.Poster} alt="" />
+//       </Link>
+//     </figure>
+//     <Link className="links" to="/movie">
+//       {movie.Title}
+//     </Link>
+//   </div>
+// ))}
