@@ -367,11 +367,13 @@ form {
   .movies {
     flex-direction: row;
     align-items: center;
+  }
+  .movie {
     width: calc(100%/2);
   }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 740px) {
   h1 {
     font-size: 20px;
   }
