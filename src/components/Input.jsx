@@ -7,22 +7,22 @@ import { Link } from "react-router-dom";
 
 const Search = () => {
   const searchRef = useRef("");
-
   const [movie, setMovie] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   async function fetchData() {
+    setLoading(true);
     const response = await axios.get(
       `https://www.omdbapi.com/?i=tt3896198&apikey=8d3516ff&s=Fast`
     );
-    console.log(response.data.Search)
     let arr = [];
     for (let i = 0; i < response.data.Search.length; ++i) {
       if (response.data.Search[i].Poster !== "N/A") {
         arr.push(response.data.Search[i]);
       }
     }
-    // console.log(arr)
     setMovie(arr);
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -44,7 +44,6 @@ const Search = () => {
       }
     }
 
-    console.log(arr);
     setMovie(arr);
   }
 
@@ -76,18 +75,44 @@ const Search = () => {
               <h1 className="aqua--text search">Search Results:</h1>
             </div>
             <div className="movies">
-              {movie.map((movie) => (
-                <div className="movie">
-                  <figure>
-                    <Link className="links" to="/movie">
-                      <img src={movie.Poster} alt="" />
-                    </Link>
-                  </figure>
-                  <Link className="links" to="/movie">
-                    {movie.Title}
-                  </Link>
+              {loading ? (
+              <div className="main-item-input-wrapper">
+                <div className="main-item-input">
+                  <div className="animated-poster-background-input"></div>
+                  <div className="animated-title-background-input"></div>
+                  <div className="animated-type-background-input"></div>
+                  <div className="animated-year-background-input"></div>
+                  <div className="animated-id-background-input"></div>
                 </div>
-              ))}
+                <div className="main-item-input">
+                  <div className="animated-poster-background-input"></div>
+                  <div className="animated-title-background-input"></div>
+                  <div className="animated-type-background-input"></div>
+                  <div className="animated-year-background-input"></div>
+                  <div className="animated-id-background-input"></div>
+                </div>  
+                <div className="main-item-input">
+                  <div className="animated-poster-background-input"></div>
+                  <div className="animated-title-background-input"></div>
+                  <div className="animated-type-background-input"></div>
+                  <div className="animated-year-background-input"></div>
+                  <div className="animated-id-background-input"></div>
+                </div>  
+              </div>
+                ) : (
+                movie.map((movie, index) => (
+                  <div className="movie" key={index}>
+                    <figure>
+                      <Link className="links" to={`/movie/${movie.imdbID}`}>
+                        <img src={movie.Poster} alt="" />
+                      </Link>
+                    </figure>
+                    <Link className="links" to={`/movie/${movie.imdbID}`}>
+                      {movie.Title}
+                    </Link>
+                  </div>
+                ))
+              )}  
             </div>
           </div>
         </div>
