@@ -1,14 +1,14 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import Search from '../components/Input'
+import React from "react";
+import Navbar from "../components/Navbar";
+import Search from "../components/Input";
 
 const Movies = () => {
-    return (
-        <div>
-            <Navbar />
-            <Search />
-        </div>
-    )
-}
+  return (
+    <div>
+      <Navbar />
+      <Search />
+    </div>
+  );
+};
 
-export default Movies
+export default Movies;

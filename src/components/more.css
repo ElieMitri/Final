@@ -209,6 +209,7 @@ form {
 
 .back__btn {
   text-decoration: underline;
+  margin: 10px 20px;
 }
 
 .main-item {
@@ -228,7 +229,7 @@ form {
 .main-item-input {
   padding: 10px;
   background-color: rgb(100, 89, 89);
-  width: calc(100%/2);
+  /* width: calc(100%/2); */
 }
 
 .background-masker {
@@ -369,8 +370,24 @@ form {
     align-items: center;
   }
   .movie {
-    width: calc(100%/2);
+    width: 100%;
   }
+
+  .main-item-input-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .animated-poster-background-input {
+    width: 300px;
+    height: 500px;
+  }
+
+  .main-item-input {
+    padding: 10px;
+    background-color: rgb(100, 89, 89); 
+  }
+  
 }
 
 @media (max-width: 740px) {
@@ -387,14 +404,18 @@ form {
   }
 }
 
+@media (max-width: 620px) {
+  .refresh__page {
+    display: none;
+  }
+
+}
+
 @media (max-width: 500px) {
   .nav__a {
     font-size: 14px;
   }
 
-  .refresh__page {
-    display: none;
-  }
 }
 
 @media (max-width: 476px) {
