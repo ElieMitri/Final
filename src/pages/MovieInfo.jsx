@@ -24,9 +24,6 @@ const MoviesInfo = () => {
   return (
     <>
       <Navbar />
-      <Link to="/movies">
-        <h1 className="aqua--text back__btn">BACK</h1>
-      </Link>
       <div className="movies">
         {loading ? (
           <div className="main-item">
@@ -37,16 +34,23 @@ const MoviesInfo = () => {
             <div className="animated-id-background"></div>
           </div>
         ) : (
-          <div className="movie">
-            <figure>
-              <div className="links">
-                <img src={movie.Poster} alt="" />
+          <div className="moive__wrapper">
+            <Link to="/movies">
+              <div className="back__btn--wrapper">
+            <span className="aqua--text back__btn">BACK</span>
               </div>
-            </figure>
-            <div className="links">Title: {movie.Title}</div>
-            <h2 className="links">Type: {movie.Type}</h2>
-            <h2 className="links">Year: {movie.Year}</h2>
-            <h2 className="links">imdbID: {movie.imdbID}</h2>
+            </Link>
+            <div className="movie__more">
+              <figure>
+                <div className="links">
+                  <img src={movie.Poster} alt="" />
+                </div>
+              </figure>
+              <div className="links">Title: {movie.Title}</div>
+              <h2 className="links">Type: {movie.Type}</h2>
+              <h2 className="links">Year: {movie.Year}</h2>
+              <h2 className="links">imdbID: {movie.imdbID}</h2>
+            </div>
           </div>
         )}
       </div>
