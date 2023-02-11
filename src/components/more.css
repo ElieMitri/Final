@@ -379,9 +379,9 @@ form {
     flex-direction: row;
     align-items: center;
   }
-  /* .movie {
+  .movie {
     width: 100%;
-  } */
+  }
 
   .main-item-input-wrapper {
     flex-direction: column;
