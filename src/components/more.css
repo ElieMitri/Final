@@ -225,10 +225,21 @@ form {
   border-radius: 30px;
   width: 130px;
   height: 40px;
+  margin-top: 30px;
 }
 .back__btn--wrapper {
   margin: 20px 0;
   max-width: 600px;
+}
+
+.waiting__img--wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.waiting__img {
+  width: 300px;
 }
 
 .main-item {
