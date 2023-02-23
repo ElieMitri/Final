@@ -35,11 +35,6 @@ const MoviesInfo = () => {
           </div>
         ) : (
           <div className="moive__wrapper">
-            <Link to="/movies">
-              <div className="back__btn--wrapper">
-            <span className="aqua--text back__btn">BACK</span>
-              </div>
-            </Link>
             <div className="movie__more">
               <figure>
                 <div className="links">
@@ -50,6 +45,9 @@ const MoviesInfo = () => {
               <h2 className="links">Type: {movie.Type}</h2>
               <h2 className="links">Year: {movie.Year}</h2>
               <h2 className="links">imdbID: {movie.imdbID}</h2>
+            <Link to="/movies">
+            <button className="cursor back__btn">BACK</button>
+            </Link>
             </div>
           </div>
         )}

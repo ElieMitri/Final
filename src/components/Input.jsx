@@ -75,17 +75,13 @@ const Search = () => {
               <h1 className="aqua--text search">Search Results:</h1>
             </div>
             <div className="movies">
-              {loading ?
+              {
+              loading ?
                new Array(10).fill(0) .map((_, index) => (
-              // <div className="main-item-input-wrapper" key={index}>
                 <div className="main-item-input" key={index}>
                   <div className="animated-poster-background-input"></div>
                   <div className="animated-title-background-input"></div>
-                  <div className="animated-type-background-input"></div>
-                  <div className="animated-year-background-input"></div>
-                  <div className="animated-id-background-input"></div>
-                {/* </div> */}
-              </div>
+                </div>
                 )
                 ) : (
                 movie.map((movie, index) => (
@@ -100,7 +96,8 @@ const Search = () => {
                     </Link>
                   </div>
                 ))
-              )}  
+              )
+            }  
             </div>
           </div>
         </div>
