@@ -23,6 +23,7 @@ const Search = () => {
     }
     setMovie(arr);
     setLoading(false);
+    console.log(response.data.Search)
   }
 
   useEffect(() => {
